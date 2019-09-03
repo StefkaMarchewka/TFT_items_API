@@ -14,7 +14,7 @@ public class MainTest {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
         EntityManager em = emf.createEntityManager();
 
-        fillDB(em);
+        fillDBOrdinaryItems(em);
         em.clear();
 
         em.close();
@@ -23,11 +23,11 @@ public class MainTest {
     }
 
 
-    public static void fillDB(EntityManager em){
+    public static void fillDBOrdinaryItems(EntityManager em){
 
         Map<String, String> bFAndBF = new HashMap<String, String>();
-        bFAndBF.put("bf Sword", "Infinity edge");
-        OrdinaryItem BFSword = new OrdinaryItem("BF Sword", "Attack damage", "+20", bFAndBF);
+        bFAndBF.put("B.F. Sword", "Infinity edge");
+        OrdinaryItem BFSword = new OrdinaryItem("B.F. Sword", "Attack damage", "+20", bFAndBF);
 
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
