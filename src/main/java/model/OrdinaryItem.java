@@ -30,8 +30,5 @@ public class OrdinaryItem {
         this.matches = matches;
     }
 
-    public void setMatches(HashMap matches) {
-        this.matches = matches;
 
-    }
 }
