@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="TFT_items_API:war exploded">
+    <output-path>$PROJECT_DIR$/target/TFT_items_API</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>TFT_items_API</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="TFT_items_API" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/TFT_items_API/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="TFT_items_API/web/Web" />
+    </root>
+  </artifact>
+</component>
