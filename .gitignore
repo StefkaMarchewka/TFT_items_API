@@ -3,6 +3,7 @@
 *.iml
 *.iws
 .idea/misc.xml
+misc.xml
 
 # Mac
 .DS_Store
