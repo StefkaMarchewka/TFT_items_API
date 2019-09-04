@@ -1,6 +1,5 @@
 package dao;
 
-import jdk.nashorn.api.scripting.JSObject;
 import model.FullItem;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,10 +23,11 @@ public class FullItemDAO {
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("name", item.getName());
         jsonObj.put("special effect", item.getSpecialEffect());
-        JSONArray parents = new JSONArray().put();
-        jsonObj.put()
-
-
+        JSONArray parents = new JSONArray();
+        parents.add(item.getBuildingItems().get(0));
+        parents.add(item.getBuildingItems().get(1));
+        jsonObj.put("Creation objects", parents);
+        return jsonObj.toJSONString();
 
     }
 
