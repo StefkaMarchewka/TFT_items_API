@@ -22,4 +22,20 @@ public class FullItem {
         this.specialEffect = specialEffect;
         this.buildingItems = buildingItems;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSpecialEffect() {
+        return specialEffect;
+    }
+
+    public Map<String, String> getBuildingItems() {
+        return buildingItems;
+    }
 }
