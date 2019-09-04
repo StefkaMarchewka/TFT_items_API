@@ -43,7 +43,12 @@ public class FullItemCreator {
         createFullItem("Cursed Blade", "Attacks have a 20% chance to Shrink (Reduce enemy's star level by 1)", "Recurve Bow", "Negatron Cloak");
         createFullItem("Runaan's Hurricane:", "Attacks hit 1 additional enemy. This extra hit does 75% damage and applies on-hit effects.", "Spatula", "Negatron Cloak");
         createFullItem("Dragon’s Claw", "83% resistance to magic damage", "Negatron Cloak", "Negatron Cloak");
-        createFullItem();
+        createFullItem(" Stattik Shiv", "Every 3rd attack deals 100 splash magical damage to 2 additional targets.", "Tear of the Goddess", "Recurve Bow");
+        createFullItem("Rapid Fire Cannon", "Attacks cannot be dodged. Attack Range is doubled.", "Recurve Bow", "Recurve Bow");
+        createFullItem("Blade of the Ruined King", "Wearer is also a Blademaster.", "Recurve Bow ", "Spatula");
+        createFullItem("Force of Nature", "Gain + team size","Spatula", "Spatula" );
+        createFullItem("Darkin", "Wearer is also a Demon","Tear of the Goddess", "Spatula");
+        createFullItem("Seraph's Embrace", "Regain 20 mana each time a spell is cast.", "Tear of the Goddess", "Tear of the Goddess");
     }
 
     private void createFullItem(String name, String specialEffect, String firstParent, String secondParent){
