@@ -1,7 +1,6 @@
 package servlets;
 
 import dao.OrdinaryITemDao;
-import model.OrdinaryItem;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "collectionservlet", urlPatterns = {"/collection"}, loadOnStartup = 1)
+@WebServlet(name = "collectionservlet", urlPatterns = {"/collections"}, loadOnStartup = 1)
 public class CollectionServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
