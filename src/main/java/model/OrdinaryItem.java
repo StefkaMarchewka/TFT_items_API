@@ -1,6 +1,6 @@
 package model;
 
-import org.eclipse.persistence.annotations.PrimaryKey;
+
 
 import javax.persistence.*;
 import java.util.HashMap;
@@ -29,5 +29,15 @@ public class OrdinaryItem {
 
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getStatistic_name() {
+        return statistic_name;
+    }
+
+    public String getAmmount() {
+        return ammount;
+    }
 }

@@ -3,6 +3,35 @@ package dao;
 
 // we didnt implement interface cuz we are laze and mentors are't here... :(
 
-public class OrdinaryITemDao {
+import model.OrdinaryItem;
 
+import org.json.simple.JSONObject;
+
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.swing.text.html.parser.Entity;
+import java.awt.image.SampleModel;
+
+public class OrdinaryITemDao {
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
+    private EntityManager em = emf.createEntityManager();
+
+    public OrdinaryITemDao() {
+    }
+
+
+    public String  getItemByNameToJSON(String name){
+        OrdinaryItem ordinaryItem = em.find(OrdinaryItem.class, name);
+
+        JSONObject sampleObject = new JSONObject();
+        sampleObject.put("name", ordinaryItem.getName());
+        sampleObject.put("statistic name", ordinaryItem.getStatistic_name());
+        sampleObject.put("amount", ordinaryItem.getAmmount());
+
+
+
+        return sampleObject.toJSONString();
+    }
 }
