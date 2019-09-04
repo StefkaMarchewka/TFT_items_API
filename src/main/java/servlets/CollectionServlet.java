@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "collectionservlet", urlPatterns = {"/collections"}, loadOnStartup = 1)
+@WebServlet(name = "collectionservlet", urlPatterns = {"/collections", "collections/item/*"}, loadOnStartup = 1)
 public class CollectionServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
@@ -25,11 +25,23 @@ public class CollectionServlet extends HttpServlet {
 //
 //
 //        }
+
+       if (req.getRequestURI().equals("/collections")){
+            resp.getWriter().write(json);
+        }
+       else if (req.getRequestURI().contains("collections/item/")){
+           String[] uriParts = req.getRequestURI().split("/");
+           resp.getWriter().write(oID.getItemByNameToJSON(uriParts[2]));
+       }
+
 //        else if (req.getRequestURI().equals("/collection")){
 //            resp.getWriter().write(json);
 //        }
 
+
         resp.getWriter().write("collection spy");
+
+
 
 
     }
