@@ -1,3 +1,4 @@
+import model.FullItem;
 import model.OrdinaryItem;
 
 import javax.persistence.EntityManager;
@@ -5,22 +6,35 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainTest {
+
 
     public static void main(String[] args) {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
         EntityManager em = emf.createEntityManager();
 
+        FullItemCreator fullItemCreator = new FullItemCreator();
+        fullItemCreator.createItemsList();
+        List fullItems = fullItemCreator.getItemsList();
+
         fillDBOrdinaryItems(em);
+        fillDBFullItems(em, fullItems);
         em.clear();
 
         em.close();
         emf.close();
 
     }
+
+    public static void fillDBFullItems(EntityManager em, List<FullItem> itemToAdd){
+
+    }
+
+
 
 
     public static void fillDBOrdinaryItems(EntityManager em){
