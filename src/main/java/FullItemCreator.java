@@ -34,6 +34,16 @@ public class FullItemCreator {
         createFullItem("Zephyr", "On start of combat, banish an enemy for 5 seconds", "Giant's Belt", "Negatron Cloak");
         createFullItem("Warmog's Armor","Wearer regenerates 6% of missing health per second.",  "Giant's Belt", "Giant's Belt");
         createFullItem("Frozen Mallet", "Wearer is also a Glacial.", "Giant's Belt", "Spatula");
+        createFullItem("Guinsoo's Rageblade","Attacks grant 5% Attack Speed. Stacks infinitely.",  "Recurve Bow ", "Needlessly Large Rod");
+        createFullItem("Rabadon's Deathcap", "Wearer's Ability Damage increased by 50%.", "Needlessly Large Rod", "Needlessly Large Rod");
+        createFullItem("Yuumi", "Wearer is also a Sorcerer.", "Spatula", "Needlessly Large Rod");
+        createFullItem("Ionic Spark", "Whenever an enemy casts a spell, they take 125 true damage", "Negatron Cloak","Needlessly Large Rod" );
+        createFullItem("Luden's Echo:", "Deal 180 splash damage on ability hit.", "Tear of the Goddess", "Needlessly Large Rod ");
+        createFullItem("Hush", "33% chance on hit to prevent the enemy champion from gaining mana for 4 seconds.", "Tear of the Goddess", "Negatron Cloak");
+        createFullItem("Cursed Blade", "Attacks have a 20% chance to Shrink (Reduce enemy's star level by 1)", "Recurve Bow", "Negatron Cloak");
+        createFullItem("Runaan's Hurricane:", "Attacks hit 1 additional enemy. This extra hit does 75% damage and applies on-hit effects.", "Spatula", "Negatron Cloak");
+        createFullItem("Dragon’s Claw", "83% resistance to magic damage", "Negatron Cloak", "Negatron Cloak");
+        createFullItem();
     }
 
     private void createFullItem(String name, String specialEffect, String firstParent, String secondParent){
