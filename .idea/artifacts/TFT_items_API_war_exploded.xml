@@ -14,6 +14,7 @@
           <element id="module-output" name="TFT_items_API" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
           <element id="library" level="project" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa:2.6.2" />
           <element id="library" level="project" name="Maven: org.eclipse.persistence:javax.persistence:2.1.1" />
           <element id="library" level="project" name="Maven: org.eclipse.persistence:org.eclipse.persistence.asm:2.6.2" />

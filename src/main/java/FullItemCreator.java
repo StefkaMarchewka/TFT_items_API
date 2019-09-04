@@ -1,9 +1,7 @@
 import model.FullItem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FullItemCreator {
     private List<FullItem> allFullItems = new ArrayList();
@@ -52,8 +50,9 @@ public class FullItemCreator {
     }
 
     private void createFullItem(String name, String specialEffect, String firstParent, String secondParent){
-        Map<String, String> parents = new HashMap<String, String>();
-        parents.put(firstParent, secondParent);
+        List<String> parents = new ArrayList<String>();
+        parents.add(firstParent);
+        parents.add(secondParent);
         FullItem fullItem = new FullItem(name, specialEffect, parents);
         allFullItems.add(fullItem);
 
