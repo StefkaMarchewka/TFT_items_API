@@ -17,17 +17,16 @@ public class OrdinaryItem {
     private String ammount;
 
 
-    @ElementCollection
-    private Map<String, String> matches;
+
 
     public OrdinaryItem() {
     }
 
-    public OrdinaryItem(String name, String statistic_name, String ammount, Map matches){
+    public OrdinaryItem(String name, String statistic_name, String ammount){
         this.ammount = ammount;
         this.name = name;
         this.statistic_name = statistic_name;
-        this.matches = matches;
+
     }
 
 
