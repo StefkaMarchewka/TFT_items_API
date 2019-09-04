@@ -64,9 +64,17 @@
 <!--      <version>2.8.2</version>-->
 <!--    </dependency>-->
 
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.0</version>
+        <scope>provided</scope>
+      </dependency>
+
   </dependencies>
   <build>
     <finalName>TFT_items_API</finalName>
+    <sourceDirectory>src/main/java</sourceDirectory>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
@@ -98,6 +106,16 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+        <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>9.4.9.v20180320</version>
+          <configuration>
+            <reload>automatic</reload>
+            <scanIntervalSeconds>1</scanIntervalSeconds>
+          </configuration>
+        </plugin>
+
       </plugins>
     </pluginManagement>
   </build>

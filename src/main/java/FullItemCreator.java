@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FullItemCreator {
-    private List<FullItem> allFullItems = new ArrayList<>();
+    private List<FullItem> allFullItems = new ArrayList();
 
     public List<FullItem> getItemsList(){
         return allFullItems;
