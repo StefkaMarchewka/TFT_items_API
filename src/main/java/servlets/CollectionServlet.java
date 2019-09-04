@@ -28,8 +28,9 @@ public class CollectionServlet extends HttpServlet {
        if (req.getRequestURI().equals("/collections")){
             resp.getWriter().write(json);
         }
-       else {
-           resp.getWriter().write("everything else than collection");
+       else if (req.getRequestURI().contains("collections/item/")){
+           String[] uriParts = req.getRequestURI().split("/");
+           resp.getWriter().write(oID.getItemByNameToJSON(uriParts[2]));
        }
 
         resp.getWriter().write("collection spy");
