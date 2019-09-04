@@ -25,6 +25,7 @@ public class CollectionServlet extends HttpServlet {
 //
 //
 //        }
+
        if (req.getRequestURI().equals("/collections")){
             resp.getWriter().write(json);
         }
@@ -32,6 +33,11 @@ public class CollectionServlet extends HttpServlet {
            String[] uriParts = req.getRequestURI().split("/");
            resp.getWriter().write(oID.getItemByNameToJSON(uriParts[2]));
        }
+
+//        else if (req.getRequestURI().equals("/collection")){
+//            resp.getWriter().write(json);
+//        }
+
 
         resp.getWriter().write("collection spy");
 
