@@ -25,13 +25,25 @@ public class MainTest {
 
     public static void fillDBOrdinaryItems(EntityManager em){
 
-        Map<String, String> bFAndBF = new HashMap<String, String>();
-        bFAndBF.put("B.F. Sword", "Infinity edge");
-        OrdinaryItem BFSword = new OrdinaryItem("B.F. Sword", "Attack damage", "+20", bFAndBF);
+        OrdinaryItem BFSword = new OrdinaryItem("B.F. Sword", "Attack damage", "+20");
+        OrdinaryItem NeedLessLyLargeRod = new OrdinaryItem("Needlessly large rod", "Ability power", "+20");
+        OrdinaryItem Negatron = new OrdinaryItem("Negatron Cloak", "Magic Resist", "+20");
+        OrdinaryItem recurve = new OrdinaryItem("RECURVE BOW", "Attack speed", "+20%");
+        OrdinaryItem spatula = new OrdinaryItem("SPATULA", "It must do something...", "");
+        OrdinaryItem tear = new OrdinaryItem("TEAR OF THE GODDESS", "starting mana", "+20");
+        OrdinaryItem belt = new OrdinaryItem("GIANT’S BELT", "health", "+200");
+        OrdinaryItem vest = new OrdinaryItem("CHAIN VEST", "Armor", "+20");
 
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(BFSword);
+        em.persist(NeedLessLyLargeRod);
+        em.persist(Negatron);
+        em.persist(recurve);
+        em.persist(spatula);
+        em.persist(tear);
+        em.persist(belt);
+        em.persist(vest);
         transaction.commit();
         System.out.printf("added new item");
     };
