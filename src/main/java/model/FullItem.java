@@ -1,23 +1,23 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Map;
+import java.util.List;
 
 @Entity
 
 public class FullItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String name;
-    String specialEffect;
+    private int id;
+    private String name;
+    private String specialEffect;
     @ElementCollection
-    Map<String, String> buildingItems;
+    private List<String> buildingItems;
 
     public FullItem() {
     }
 
-    public FullItem(String name, String specialEffect, Map<String, String> buildingItems) {
+    public FullItem(String name, String specialEffect, List<String> buildingItems) {
         this.name = name;
         this.specialEffect = specialEffect;
         this.buildingItems = buildingItems;
@@ -35,7 +35,7 @@ public class FullItem {
         return specialEffect;
     }
 
-    public Map<String, String> getBuildingItems() {
+    public List<String> getBuildingItems() {
         return buildingItems;
     }
 }
