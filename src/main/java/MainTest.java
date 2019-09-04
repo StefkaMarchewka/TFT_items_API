@@ -5,9 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainTest {
 
@@ -31,7 +29,13 @@ public class MainTest {
     }
 
     public static void fillDBFullItems(EntityManager em, List<FullItem> itemToAdd){
-
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        for (FullItem item:itemToAdd
+             ) {
+            em.persist(item);
+        }
+        transaction.commit();
     }
 
 
