@@ -3,9 +3,13 @@ package model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@NamedQuery(name="FullItem.findByName",
+        query = "SELECT item.name FROM FullItem item where item.name like :inputName")
 
+@Entity
 public class FullItem {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -16,6 +20,8 @@ public class FullItem {
 
     public FullItem() {
     }
+
+
 
     public FullItem(String name, String specialEffect, List<String> buildingItems) {
         this.name = name;
