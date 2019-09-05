@@ -4,10 +4,7 @@ import model.FullItem;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.List;
 
 public class FullItemDAO {
@@ -29,6 +26,33 @@ public class FullItemDAO {
         query.setParameter("name", name);
         List<FullItem> resultList = query.getResultList();
         return resultList.get(0);
+    }
+
+    public void delete(FullItem item){
+        EntityTransaction trans = em.getTransaction();
+
+        try {
+            trans.begin();
+
+            item = em.find(item.getClass(), item.getId());
+            //Query query = em.createQuery("delete FullItem  where name = :name");
+            //query.setParameter("name", item.getName());
+            //query.executeUpdate();
+
+
+            em.remove(item);
+            em.flush();
+            trans.commit();
+        }catch (Exception e){
+            System.out.println("error occured");
+        }
+        finally {
+            if(trans.isActive()) trans.rollback();
+            em.close();
+        }
+
+
+
     }
 
 
