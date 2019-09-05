@@ -6,9 +6,9 @@ package dao;
 import model.OrdinaryItem;
 import org.json.simple.JSONObject;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrdinaryITemDao {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
@@ -31,4 +31,64 @@ public class OrdinaryITemDao {
 
         return sampleObject.toJSONString();
     }
+
+
+    public String getAllItems(){
+
+        Query query = em.createQuery("from OrdinaryItem");
+        List<OrdinaryItem> ordinaryItemList = query.getResultList();
+
+
+
+        StringBuilder jsonString = new StringBuilder();
+
+
+        for (OrdinaryItem  item: ordinaryItemList
+             ) {
+            JSONObject sampleObject = new JSONObject();
+            sampleObject.put("item", item.getName());
+            sampleObject.put("statistic name", item.getStatistic_name());
+            sampleObject.put("amount", item.getAmmount());
+            jsonString.append(sampleObject.toJSONString()).append("\n");
+        }
+
+
+        return jsonString.toString();
+    }
+
+
+
+
+
+
+    public void delateItems(){
+        Query query = em.createQuery("from OrdinaryItem");
+        List<OrdinaryItem> ordinaryItemList = query.getResultList();
+
+        int id = ordinaryItemList.size();
+        for (int i = 0; i < id; i++) {
+            Query queryToDelate = em.createQuery("delete from OrdinaryItem where id=:i" );
+        }
+
+
+    }
+
+    public void addItems(List<OrdinaryItem> ordinaryItem){
+        delateItems();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        for (OrdinaryItem item: ordinaryItem
+             ) {
+            em.persist(item);
+        }
+
+        transaction.commit();
+        System.out.printf("added new item");
+
+
+
+    }
+
+
 }
