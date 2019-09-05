@@ -21,7 +21,7 @@ public class FullItemCreator {
         createFullItem("Zeke's Herald", "On start of combat, allies 2 spaces to the left and right gain +15% Attack Speed.", "B.F. Sword", "Giant’s Belt");
         createFullItem("Locket of the Iron Solari", "On start of combat, allies two spaces to the left and right gain a shield of 250 for 6 seconds.", "Chain Vest", "Needlessly Large Rod ");
         createFullItem("Thornmail", "Reflect 100% of mitigated damage taken from attacks as magic damage.", "Chain Vest", "Chain Vest");
-        createFullItem("Phantom Dancer:", "Wearer dodges all Critical Strikes.","Chain Vest",  "Recurve Bow");
+        createFullItem("Phantom Dancer", "Wearer dodges all Critical Strikes.","Chain Vest",  "Recurve Bow");
         createFullItem("Frozen Heart", "Adjacent enemies lose 25% Attack Speed.", "Chain Vest", "Tear of the Goddess");
         createFullItem("Sword Breaker", "Attacks have a 25% chance to disarm", "Chain Vest", "Negatron Cloak");
         createFullItem("Red Buff", "Attacks burn for 20% of max HP over 10s and disable healing", "Chain Vest", "Giant’s Belt");
@@ -36,12 +36,12 @@ public class FullItemCreator {
         createFullItem("Rabadon's Deathcap", "Wearer's Ability Damage increased by 50%.", "Needlessly Large Rod", "Needlessly Large Rod");
         createFullItem("Yuumi", "Wearer is also a Sorcerer.", "Spatula", "Needlessly Large Rod");
         createFullItem("Ionic Spark", "Whenever an enemy casts a spell, they take 125 true damage", "Negatron Cloak","Needlessly Large Rod" );
-        createFullItem("Luden's Echo:", "Deal 180 splash damage on ability hit.", "Tear of the Goddess", "Needlessly Large Rod ");
+        createFullItem("Luden's Echo", "Deal 180 splash damage on ability hit.", "Tear of the Goddess", "Needlessly Large Rod ");
         createFullItem("Hush", "33% chance on hit to prevent the enemy champion from gaining mana for 4 seconds.", "Tear of the Goddess", "Negatron Cloak");
         createFullItem("Cursed Blade", "Attacks have a 20% chance to Shrink (Reduce enemy's star level by 1)", "Recurve Bow", "Negatron Cloak");
-        createFullItem("Runaan's Hurricane:", "Attacks hit 1 additional enemy. This extra hit does 75% damage and applies on-hit effects.", "Spatula", "Negatron Cloak");
+        createFullItem("Runaan's Hurricane", "Attacks hit 1 additional enemy. This extra hit does 75% damage and applies on-hit effects.", "Spatula", "Negatron Cloak");
         createFullItem("Dragon’s Claw", "83% resistance to magic damage", "Negatron Cloak", "Negatron Cloak");
-        createFullItem(" Stattik Shiv", "Every 3rd attack deals 100 splash magical damage to 2 additional targets.", "Tear of the Goddess", "Recurve Bow");
+        createFullItem("Stattik Shiv", "Every 3rd attack deals 100 splash magical damage to 2 additional targets.", "Tear of the Goddess", "Recurve Bow");
         createFullItem("Rapid Fire Cannon", "Attacks cannot be dodged. Attack Range is doubled.", "Recurve Bow", "Recurve Bow");
         createFullItem("Blade of the Ruined King", "Wearer is also a Blademaster.", "Recurve Bow ", "Spatula");
         createFullItem("Force of Nature", "Gain + team size","Spatula", "Spatula" );

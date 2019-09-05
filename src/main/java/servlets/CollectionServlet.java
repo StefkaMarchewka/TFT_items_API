@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "collectionservlet", urlPatterns = {"/collections", "collections/item/*"}, loadOnStartup = 1)
+@WebServlet(name = "dupaservlet", urlPatterns = {"/dupa"}, loadOnStartup = 1)
 public class CollectionServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
