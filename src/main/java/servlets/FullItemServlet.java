@@ -20,34 +20,25 @@ public class FullItemServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = getItemNameFromUri(req);
-        FullItem itemToShow = fullItemDAO.getByName(name);
+        int index = getIndexFromUri(req);
+        FullItem itemToShow = fullItemDAO.getItem(index);
         resp.getWriter().write(fullItemDAO.writeJSONFullItem(itemToShow));
 
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = getItemNameFromUri(req);
-        FullItem itemToDel = fullItemDAO.getByName(name);
+        int index = getIndexFromUri(req);
+        FullItem itemToDel = fullItemDAO.getItem(index);
         fullItemDAO.delete(itemToDel);
     }
 
-    private String getItemNameFromUri(HttpServletRequest req) {
+    private int getIndexFromUri(HttpServletRequest req) {
         String uri = req.getRequestURI();
         String[] uriParts = req.getRequestURI().split("/");
-        String name = "";
         String nameToParse = uriParts[3];
-        if(nameToParse.contains("_")){
-            String[] split = nameToParse.split("_");
-            StringBuilder sb = new StringBuilder();
-            sb.append(split[0]);
-            sb.append(" ");
-            sb.append(split[1]);
-
-            name = sb.toString();
-        }else name = uriParts[3];
-        return name;
+        int index = Integer.valueOf(nameToParse);
+        return index;
     }
 
 

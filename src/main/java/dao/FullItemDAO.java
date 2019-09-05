@@ -18,6 +18,11 @@ public class FullItemDAO {
         return resultList.get(0);
     }
 
+    public FullItem getItem(int index){
+        FullItem item = em.find(FullItem.class, index);
+        return item;
+    };
+
     public void delete(FullItem item){
         EntityTransaction trans = em.getTransaction();
         try {
