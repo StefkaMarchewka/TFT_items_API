@@ -11,25 +11,26 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class FullItemDAO {
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
+    private EntityManager em = emf.createEntityManager();
 
+    //nie działa z powodu niekompatybilnych typów, string nie mzo ebyc fullItem ???? dlacego tak?
+    public FullItem getItemByName(String name){
+        //Object fullItemObj = em.createNamedQuery("FullItem.findByName")
+         //       .setParameter("inputName", name).getSingleResult();
+        //FullItem fi = (FullItem) fullItemObj;
+        List<FullItem> fullItemObj = em.createNamedQuery("FullItem.findByName", FullItem.class)
+               .setParameter("inputName", name).getResultList();
+        return fullItemObj.get(0);
+    };
 
-    public FullItem getByName(EntityManager em, String name){
+    public FullItem getByName(String name){
         Query query = em.createQuery("from FullItem where name = :name");
         query.setParameter("name", name);
-        List resultList = query.getResultList();
-        FullItem resultItem = (FullItem) resultList.get(0);
-        return resultItem;
+        List<FullItem> resultList = query.getResultList();
+        return resultList.get(0);
     }
 
-    //this method should not work
-    public void getItemByName(String name){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
-        EntityManager em = emf.createEntityManager();
-
-        FullItem fullItem = em.find(FullItem.class, name);
-
-
-    }
 
     public String writeJSONFullItem(FullItem item){
         JSONObject jsonObj = new JSONObject();

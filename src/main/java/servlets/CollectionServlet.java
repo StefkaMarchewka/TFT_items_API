@@ -1,6 +1,8 @@
 package servlets;
 
+import dao.FullItemDAO;
 import dao.OrdinaryITemDao;
+import model.FullItem;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +15,7 @@ import java.io.IOException;
 public class CollectionServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
+    FullItemDAO fullItemDAO = new FullItemDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +30,9 @@ public class CollectionServlet extends HttpServlet {
        else if (req.getRequestURI().contains("collections/item/")){
            String[] uriParts = req.getRequestURI().split("/");
            System.out.println(uriParts[3] + "dupa");
-           resp.getWriter().write(oID.getItemByNameToJSON(3));
+           String name = uriParts[3];
+           FullItem itemToShow = fullItemDAO.getByName(name);
+           resp.getWriter().write(fullItemDAO.writeJSONFullItem(itemToShow));
        }
 
 
