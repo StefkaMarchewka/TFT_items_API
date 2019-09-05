@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "collectionservlet", urlPatterns = {"/collections/fullitems/*"}, loadOnStartup = 1)
+@WebServlet(name = "collectionServlet", urlPatterns = {"/collections/fullItems/*"}, loadOnStartup = 1)
 public class FullItemServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
@@ -35,17 +35,15 @@ public class FullItemServlet extends HttpServlet {
 
     private String getItemNameFromUri(HttpServletRequest req) {
         String uri = req.getRequestURI();
-
         String[] uriParts = req.getRequestURI().split("/");
-        //System.out.println(uriParts[3] + " dupa");
         String name = "";
         String nameToParse = uriParts[3];
         if(nameToParse.contains("_")){
-            String[] splited = nameToParse.split("_");
+            String[] split = nameToParse.split("_");
             StringBuilder sb = new StringBuilder();
-            sb.append(splited[0]);
+            sb.append(split[0]);
             sb.append(" ");
-            sb.append(splited[1]);
+            sb.append(split[1]);
 
             name = sb.toString();
         }else name = uriParts[3];

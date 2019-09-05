@@ -27,7 +27,7 @@ public class FullItemDAO {
             em.flush();
             trans.commit();
         }catch (Exception e){
-            System.out.println("error occured");
+            e.printStackTrace();
         }
         finally {
             if(trans.isActive()) trans.rollback();
