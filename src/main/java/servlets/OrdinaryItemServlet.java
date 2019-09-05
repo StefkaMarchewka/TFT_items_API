@@ -23,6 +23,7 @@ import java.util.List;
             String[] uriParts = req.getRequestURI().split("/");
             System.out.println(uriParts[3] + "dupa");
             resp.getWriter().write(oID.getItemByNameToJSON(3));
+
         }
 
         @Override

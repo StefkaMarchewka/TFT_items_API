@@ -20,7 +20,6 @@ public class OrdinaryITemDao {
 
     public String  getItemByNameToJSON(int id){
         OrdinaryItem ordinaryItem = em.find(OrdinaryItem.class, id);
-
         JSONObject sampleObject = new JSONObject();
         sampleObject.put("name", ordinaryItem.getName());
         sampleObject.put("statistic name", ordinaryItem.getStatistic_name());
