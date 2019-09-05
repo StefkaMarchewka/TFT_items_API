@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "collectionservlet", urlPatterns = {"/collections", "collections/item/*"}, loadOnStartup = 1)
-public class CollectionServlet extends HttpServlet {
+@WebServlet(name = "OrdinaryCollectionservlet", urlPatterns = {"/collections/ordinary", "collections/ordinary/item/*"}, loadOnStartup = 1)
+public class OrdinaryServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
 
@@ -24,10 +24,10 @@ public class CollectionServlet extends HttpServlet {
         String uri = req.getRequestURI();
         System.out.println(uri);
 
-       if (req.getRequestURI().equals("/collections")){
+       if (req.getRequestURI().equals("/collections/ordinary")){
             resp.getWriter().write(oID.getAllItems());
         }
-       else if (req.getRequestURI().contains("collections/item/")){
+       else if (req.getRequestURI().contains("collections/ordinary/item/")){
            String[] uriParts = req.getRequestURI().split("/");
            System.out.println(uriParts[3] + "dupa");
            resp.getWriter().write(oID.getItemByNameToJSON(3));
@@ -38,7 +38,7 @@ public class CollectionServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getRequestURI().contains("/collections")){
+        if (req.getRequestURI().contains("/collections/ordinary")){
             List jsonList = (List)  req.getAttribute("collection");
             List<OrdinaryItem> ordinaryItemList = new ArrayList<>();
             for (Object object:  jsonList
@@ -55,7 +55,7 @@ public class CollectionServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getRequestURI().contains("/collections")) {
+        if (req.getRequestURI().contains("/collections/ordinary")) {
             oID.delateItems();
         }
     }
