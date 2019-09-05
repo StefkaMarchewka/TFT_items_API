@@ -19,15 +19,9 @@ public class CollectionServlet extends HttpServlet {
         String json = "json";
         String uri = req.getRequestURI();
         System.out.println(uri);
-//        if (req.getRequestURI().length() > "/collection".length()){
-//            System.out.println("sending item");
-//            resp.getWriter().write(oID.getItemByNameToJSON(req.getRequestURI().substring(11)));
-//
-//
-//        }
 
        if (req.getRequestURI().equals("/collections")){
-            resp.getWriter().write(json);
+            resp.getWriter().write(oID.getAllItems());
         }
        else if (req.getRequestURI().contains("collections/item/")){
            String[] uriParts = req.getRequestURI().split("/");
@@ -35,15 +29,16 @@ public class CollectionServlet extends HttpServlet {
            resp.getWriter().write(oID.getItemByNameToJSON(3));
        }
 
-//        else if (req.getRequestURI().equals("/collection")){
-//            resp.getWriter().write(json);
-//        }
-
-
-        resp.getWriter().write("collection spy");
-
-
-
 
     }
+
+
+
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        oID.delateItems();
+    }
+
+
 }
