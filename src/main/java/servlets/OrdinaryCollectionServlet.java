@@ -1,8 +1,8 @@
 package servlets;
 
 import dao.OrdinaryITemDao;
+import jdk.nashorn.api.scripting.JSObject;
 import model.OrdinaryItem;
-import netscape.javascript.JSObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

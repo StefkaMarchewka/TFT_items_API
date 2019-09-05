@@ -20,6 +20,20 @@ public class FullItemServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = getItemNameFromUri(req);
+        FullItem itemToShow = fullItemDAO.getByName(name);
+        resp.getWriter().write(fullItemDAO.writeJSONFullItem(itemToShow));
+
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = getItemNameFromUri(req);
+        FullItem itemToDel = fullItemDAO.getByName(name);
+        fullItemDAO.delete(itemToDel);
+    }
+
+    private String getItemNameFromUri(HttpServletRequest req) {
         String uri = req.getRequestURI();
 
         String[] uriParts = req.getRequestURI().split("/");
@@ -35,13 +49,9 @@ public class FullItemServlet extends HttpServlet {
 
             name = sb.toString();
         }else name = uriParts[3];
-
-
-        FullItem itemToShow = fullItemDAO.getByName(name);
-        resp.getWriter().write(fullItemDAO.writeJSONFullItem(itemToShow));
-
-
-
+        return name;
     }
+
+
 }
 
