@@ -18,8 +18,8 @@ public class OrdinaryITemDao {
     }
 
 
-    public String  getItemByNameToJSON(String name){
-        OrdinaryItem ordinaryItem = em.find(OrdinaryItem.class, name);
+    public String  getItemByNameToJSON(int id){
+        OrdinaryItem ordinaryItem = em.find(OrdinaryItem.class, id);
 
         JSONObject sampleObject = new JSONObject();
         sampleObject.put("name", ordinaryItem.getName());

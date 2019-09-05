@@ -31,7 +31,8 @@ public class CollectionServlet extends HttpServlet {
         }
        else if (req.getRequestURI().contains("collections/item/")){
            String[] uriParts = req.getRequestURI().split("/");
-           resp.getWriter().write(oID.getItemByNameToJSON(uriParts[2]));
+           System.out.println(uriParts[3] + "dupa");
+           resp.getWriter().write(oID.getItemByNameToJSON(3));
        }
 
 //        else if (req.getRequestURI().equals("/collection")){
