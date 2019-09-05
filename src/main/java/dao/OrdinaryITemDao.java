@@ -6,10 +6,7 @@ package dao;
 import model.OrdinaryItem;
 import org.json.simple.JSONObject;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +69,23 @@ public class OrdinaryITemDao {
         for (int i = 0; i < id; i++) {
             Query queryToDelate = em.createQuery("delete from OrdinaryItem where id=:i" );
         }
+
+
+    }
+
+    public void addItems(List<OrdinaryItem> ordinaryItem){
+        delateItems();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        for (OrdinaryItem item: ordinaryItem
+             ) {
+            em.persist(item);
+        }
+
+        transaction.commit();
+        System.out.printf("added new item");
+
 
 
     }
