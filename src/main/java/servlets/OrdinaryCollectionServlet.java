@@ -38,6 +38,7 @@ public class OrdinaryCollectionServlet extends HttpServlet {
         oID.addItems(ordinaryItemList);
 
 
+
     }
 
     @Override

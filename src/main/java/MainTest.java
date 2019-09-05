@@ -11,18 +11,14 @@ public class MainTest {
 
 
     public static void main(String[] args) {
-
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
         EntityManager em = emf.createEntityManager();
-
         FullItemCreator fullItemCreator = new FullItemCreator();
         fullItemCreator.createItemsList();
         List fullItems = fullItemCreator.getItemsList();
-
         fillDBOrdinaryItems(em);
         fillDBFullItems(em, fullItems);
         em.clear();
-
         em.close();
         emf.close();
 

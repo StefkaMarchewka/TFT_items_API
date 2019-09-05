@@ -18,8 +18,8 @@ import java.io.IOException;
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             String[] uriParts = req.getRequestURI().split("/");
             System.out.println(uriParts[3] + "dupa");
-            resp.getWriter().write(oID.getItemByNameToJSON(3));
-
+            int id = Integer.parseInt(uriParts[4]);
+            resp.getWriter().write(oID.getItemByNameToJSON(id));
         }
 
         @Override
