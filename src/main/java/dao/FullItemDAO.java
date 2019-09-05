@@ -3,7 +3,6 @@ package dao;
 import model.FullItem;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,15 +10,6 @@ public class FullItemDAO {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
     private EntityManager em = emf.createEntityManager();
 
-    //nie działa z powodu niekompatybilnych typów, string nie mzo ebyc fullItem ???? dlacego tak?
-    public FullItem getItemByName(String name){
-        //Object fullItemObj = em.createNamedQuery("FullItem.findByName")
-         //       .setParameter("inputName", name).getSingleResult();
-        //FullItem fi = (FullItem) fullItemObj;
-        List<FullItem> fullItemObj = em.createNamedQuery("FullItem.findByName", FullItem.class)
-               .setParameter("inputName", name).getResultList();
-        return fullItemObj.get(0);
-    };
 
     public FullItem getByName(String name){
         Query query = em.createQuery("from FullItem where name = :name");
@@ -30,16 +20,9 @@ public class FullItemDAO {
 
     public void delete(FullItem item){
         EntityTransaction trans = em.getTransaction();
-
         try {
             trans.begin();
-
             item = em.find(item.getClass(), item.getId());
-            //Query query = em.createQuery("delete FullItem  where name = :name");
-            //query.setParameter("name", item.getName());
-            //query.executeUpdate();
-
-
             em.remove(item);
             em.flush();
             trans.commit();
@@ -50,8 +33,6 @@ public class FullItemDAO {
             if(trans.isActive()) trans.rollback();
             em.close();
         }
-
-
 
     }
 
