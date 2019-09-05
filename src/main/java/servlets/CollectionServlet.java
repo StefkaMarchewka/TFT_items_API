@@ -1,6 +1,7 @@
 package servlets;
 
 import dao.OrdinaryITemDao;
+import model.OrdinaryItem;
 import netscape.javascript.JSObject;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "collectionservlet", urlPatterns = {"/collections", "collections/item/*"}, loadOnStartup = 1)
@@ -38,8 +40,15 @@ public class CollectionServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getRequestURI().contains("/collections")){
             List jsonList = (List)  req.getAttribute("collection");
-            JSObject json = (JSObject) jsonList.get(0);
-            String name = (String) json.getMember("name");
+            List<OrdinaryItem> ordinaryItemList = new ArrayList<>();
+            for (Object object:  jsonList
+                 ) {
+                JSObject json = (JSObject) object;
+                OrdinaryItem ordinaryItem = new OrdinaryItem((String) json.getMember("name"),
+                        (String) json.getMember("statistic name"), (String) json.getMember("amount"));
+                ordinaryItemList.add(ordinaryItem);
+            }
+            oID.addItems(ordinaryItemList);
         }
 
     }
