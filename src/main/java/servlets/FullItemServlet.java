@@ -6,10 +6,6 @@ import dao.OrdinaryITemDao;
 import helpers.FullItemCreator;
 import model.FullItem;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,17 +43,7 @@ public class FullItemServlet extends HttpServlet {
         String secondParent = req.getParameter("p2");
 
         FullItem itemToAdd = itemCreator.makeItem(name, desc, firstParent, secondParent);
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
-        EntityManager em = emf.createEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.persist(itemToAdd);
-        transaction.commit();
-
-        em.clear();
-        em.close();
-        emf.close();
+        fullItemDAO.add(itemToAdd);
     }
 
     private int getIndexFromUri(HttpServletRequest req) {
