@@ -17,6 +17,24 @@ public class FullItemDAO {
         transaction.commit();
     }
 
+    public String getAllItems(){
+        Query query = em.createQuery("from FullItem");
+        List<FullItem> itemList = query.getResultList();
+        StringBuilder jsonString = new StringBuilder();
+        for (FullItem  item: itemList
+        ) {
+            JSONObject sampleObject = new JSONObject();
+            sampleObject.put("name", item.getName());
+            sampleObject.put("specialEffect", item.getSpecialEffect());
+            JSONArray buildingItems = new JSONArray();
+            buildingItems.add(item.getBuildingItems().get(0));
+            buildingItems.add(item.getBuildingItems().get(1));
+            sampleObject.put("building Items", buildingItems);
+            jsonString.append(sampleObject.toJSONString()).append("\n");
+        }
+        return jsonString.toString();
+    }
+
 
     public FullItem getByName(String name){
         Query query = em.createQuery("from FullItem where name = :name");
@@ -43,7 +61,7 @@ public class FullItemDAO {
         }
         finally {
             if(trans.isActive()) trans.rollback();
-            em.close();
+            //em.close();
         }
 
     }

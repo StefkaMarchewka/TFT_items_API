@@ -52,7 +52,7 @@ public class FullItemCreator {
     }
 
     private void saveItemToList(String name, String specialEffect, String firstParent, String secondParent){
-        List<String> parents = new ArrayList<String>();
+        ArrayList<String> parents = new ArrayList<String>();
         parents.add(firstParent);
         parents.add(secondParent);
         FullItem fullItem = new FullItem(name, specialEffect, parents);
@@ -61,7 +61,7 @@ public class FullItemCreator {
     }
 
     public FullItem makeItem(String name, String specialEffect, String firstParent, String secondParent){
-        List<String> parents = new ArrayList<String>();
+        ArrayList<String> parents = new ArrayList<String>();
         parents.add(firstParent);
         parents.add(secondParent);
         return new FullItem(name, specialEffect, parents);
