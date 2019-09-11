@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "collectionServlet", urlPatterns = {"/collections/fullItems/*"}, loadOnStartup = 1)
+@WebServlet(name = "itemServlet", urlPatterns = {"/collection/*"}, loadOnStartup = 1)
 public class FullItemServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
@@ -49,7 +49,7 @@ public class FullItemServlet extends HttpServlet {
     private int getIndexFromUri(HttpServletRequest req) {
         String uri = req.getRequestURI();
         String[] uriParts = req.getRequestURI().split("/");
-        String nameToParse = uriParts[3];
+        String nameToParse = uriParts[2];
         int index = Integer.valueOf(nameToParse);
         return index;
     }
