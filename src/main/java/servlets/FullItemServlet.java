@@ -3,6 +3,7 @@ package servlets;
 
 import dao.FullItemDAO;
 import dao.OrdinaryITemDao;
+import helpers.FullItemCreator;
 import model.FullItem;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ public class FullItemServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
     FullItemDAO fullItemDAO = new FullItemDAO();
+    FullItemCreator itemCreator = new FullItemCreator();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,6 +33,17 @@ public class FullItemServlet extends HttpServlet {
         int index = getIndexFromUri(req);
         FullItem itemToDel = fullItemDAO.getItem(index);
         fullItemDAO.delete(itemToDel);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name= req.getParameter("name");
+        String desc = req.getParameter("desc");
+        String firstParent = req.getParameter("p1");
+        String secondParent = req.getParameter("p2");
+
+        FullItem itemToAdd = itemCreator.makeItem(name, desc, firstParent, secondParent);
+        fullItemDAO.add(itemToAdd);
     }
 
     private int getIndexFromUri(HttpServletRequest req) {

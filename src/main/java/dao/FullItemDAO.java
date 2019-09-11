@@ -10,6 +10,13 @@ public class FullItemDAO {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
     private EntityManager em = emf.createEntityManager();
 
+    public void add(FullItem item){
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(item);
+        transaction.commit();
+    }
+
 
     public FullItem getByName(String name){
         Query query = em.createQuery("from FullItem where name = :name");
