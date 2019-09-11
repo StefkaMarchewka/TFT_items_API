@@ -22,7 +22,6 @@ public class FullItem {
     }
 
 
-
     public FullItem(String name, String specialEffect, List<String> buildingItems) {
         this.name = name;
         this.specialEffect = specialEffect;
