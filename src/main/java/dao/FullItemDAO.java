@@ -61,7 +61,6 @@ public class FullItemDAO {
         }
         finally {
             if(trans.isActive()) trans.rollback();
-            //em.close();
         }
 
     }

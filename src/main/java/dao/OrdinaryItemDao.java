@@ -39,7 +39,7 @@ public class OrdinaryITemDao {
         return jsonString.toString();
     }
 
-    public void delateItems(){
+    public void deleteItems(){
         EntityTransaction et = em.getTransaction();
         try
         {
@@ -65,7 +65,7 @@ public class OrdinaryITemDao {
     }
 
     public void addItems(List<OrdinaryItem> ordinaryItem){
-        delateItems();
+        deleteItems();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 

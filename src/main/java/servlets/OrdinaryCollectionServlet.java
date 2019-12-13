@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "OrdinaryCollectionservlet", urlPatterns = {"/collections/ordinary"}, loadOnStartup = 1)
+@WebServlet(name = "OrdinaryItemCollectionServlet", urlPatterns = {"collection/ordinaryItem"}, loadOnStartup = 1)
 public class OrdinaryCollectionServlet extends HttpServlet {
 
     OrdinaryITemDao oID = new OrdinaryITemDao();
@@ -37,15 +37,11 @@ public class OrdinaryCollectionServlet extends HttpServlet {
         }
         oID.addItems(ordinaryItemList);
 
-
-
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        oID.delateItems();
-
+        oID.deleteItems();
     }
 
 

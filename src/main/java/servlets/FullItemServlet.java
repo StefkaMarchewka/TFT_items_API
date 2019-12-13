@@ -2,7 +2,6 @@ package servlets;
 
 
 import dao.FullItemDAO;
-import dao.OrdinaryITemDao;
 import helpers.FullItemCreator;
 import model.FullItem;
 
@@ -13,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "itemServlet", urlPatterns = {"/collection/*"}, loadOnStartup = 1)
+@WebServlet(name = "FullItemServlet", urlPatterns = {"/collection/fullItem/*"}, loadOnStartup = 1)
 public class FullItemServlet extends HttpServlet {
 
-    OrdinaryITemDao oID = new OrdinaryITemDao();
+   // OrdinaryITemDao oID = new OrdinaryITemDao();
     FullItemDAO fullItemDAO = new FullItemDAO();
     FullItemCreator itemCreator = new FullItemCreator();
 
@@ -42,7 +41,6 @@ public class FullItemServlet extends HttpServlet {
         int index = Integer.valueOf(nameToParse);
         return index;
     }
-
 
 }
 
