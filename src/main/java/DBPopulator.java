@@ -8,9 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class MainTest {
-
-
+public class DBPopulator {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
         EntityManager em = emf.createEntityManager();
@@ -22,7 +20,6 @@ public class MainTest {
         em.clear();
         em.close();
         emf.close();
-
     }
 
     public static void fillDBFullItems(EntityManager em, List<FullItem> itemToAdd){
@@ -36,13 +33,11 @@ public class MainTest {
     }
 
 
-
-
     public static void fillDBOrdinaryItems(EntityManager em){
 
-        OrdinaryItem BFSword = new OrdinaryItem("B.F. Sword", "Attack damage", "+20");
-        OrdinaryItem NeedLessLyLargeRod = new OrdinaryItem("Needlessly large rod", "Ability power", "+20");
-        OrdinaryItem Negatron = new OrdinaryItem("Negatron Cloak", "Magic Resist", "+20");
+        OrdinaryItem bfSword = new OrdinaryItem("B.F. Sword", "Attack damage", "+20");
+        OrdinaryItem needlesslyLargeRod = new OrdinaryItem("Needlessly large rod", "Ability power", "+20");
+        OrdinaryItem negatron = new OrdinaryItem("Negatron Cloak", "Magic Resist", "+20");
         OrdinaryItem recurve = new OrdinaryItem("RECURVE BOW", "Attack speed", "+20%");
         OrdinaryItem spatula = new OrdinaryItem("SPATULA", "It must do something...", "");
         OrdinaryItem tear = new OrdinaryItem("TEAR OF THE GODDESS", "starting mana", "+20");
@@ -51,9 +46,9 @@ public class MainTest {
 
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        em.persist(BFSword);
-        em.persist(NeedLessLyLargeRod);
-        em.persist(Negatron);
+        em.persist(bfSword);
+        em.persist(needlesslyLargeRod);
+        em.persist(negatron);
         em.persist(recurve);
         em.persist(spatula);
         em.persist(tear);

@@ -62,7 +62,6 @@ public class FullItemDAO {
         finally {
             if(trans.isActive()) trans.rollback();
         }
-
     }
 
 
@@ -75,7 +74,6 @@ public class FullItemDAO {
         parents.add(item.getBuildingItems().get(1));
         jsonObj.put("Creation objects", parents);
         return jsonObj.toJSONString();
-
     }
 
 }
