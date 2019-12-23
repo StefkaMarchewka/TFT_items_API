@@ -1,2 +1,2 @@
 # TFT_items_API
-GIT TEST
+RESTful service with Java EE. Service provides information about Teamfight Tactics items available in League of Legends game. 
