@@ -16,11 +16,11 @@ import java.util.List;
 @WebServlet(name = "OrdinaryItemCollectionServlet", urlPatterns = {"collection/ordinaryItem"}, loadOnStartup = 1)
 public class OrdinaryCollectionServlet extends HttpServlet {
 
-    OrdinaryItemDao oID = new OrdinaryItemDao();
+    OrdinaryItemDao dao = new OrdinaryItemDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().write(oID.getAllItems());
+        resp.getWriter().write(dao.getAllItems());
     }
 
     @Override
@@ -35,13 +35,13 @@ public class OrdinaryCollectionServlet extends HttpServlet {
                     (String) json.getMember("statistic name"), (String) json.getMember("amount"));
             ordinaryItemList.add(ordinaryItem);
         }
-        oID.addItems(ordinaryItemList);
+        dao.addItems(ordinaryItemList);
 
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        oID.deleteItems();
+        dao.deleteItems();
     }
 
 
