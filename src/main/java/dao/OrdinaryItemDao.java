@@ -4,28 +4,30 @@ import org.json.simple.JSONObject;
 import javax.persistence.*;
 import java.util.List;
 
-public class OrdinaryITemDao {
+public class OrdinaryItemDao {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("tft_items");
     private EntityManager em = emf.createEntityManager();
 
-    public OrdinaryITemDao() {
+    public OrdinaryItemDao() {
     }
 
     public String  getItemByNameToJSON(int id){
-        OrdinaryItem ordinaryItem = em.find(OrdinaryItem.class, id);
+        OrdinaryItem ordinaryItem = getOrdinaryItem(id);
         JSONObject sampleObject = new JSONObject();
         sampleObject.put("name", ordinaryItem.getName());
         sampleObject.put("statistic name", ordinaryItem.getStatistic_name());
-        sampleObject.put("amount", ordinaryItem.getAmmount());
+        sampleObject.put("amount", ordinaryItem.getAmount());
 
         return sampleObject.toJSONString();
     }
 
-    public String getAllItems(){
+    public OrdinaryItem getOrdinaryItem(int id) {
+        return em.find(OrdinaryItem.class, id);
+    }
 
+    public String getAllItems(){
         Query query = em.createQuery("from OrdinaryItem");
         List<OrdinaryItem> ordinaryItemList = query.getResultList();
-
         StringBuilder jsonString = new StringBuilder();
 
         for (OrdinaryItem  item: ordinaryItemList
@@ -33,7 +35,7 @@ public class OrdinaryITemDao {
             JSONObject sampleObject = new JSONObject();
             sampleObject.put("item", item.getName());
             sampleObject.put("statistic name", item.getStatistic_name());
-            sampleObject.put("amount", item.getAmmount());
+            sampleObject.put("amount", item.getAmount());
             jsonString.append(sampleObject.toJSONString()).append("\n");
         }
         return jsonString.toString();
@@ -41,8 +43,7 @@ public class OrdinaryITemDao {
 
     public void deleteItems(){
         EntityTransaction et = em.getTransaction();
-        try
-        {
+        try {
             et.begin();
             Query query = em.createQuery("from OrdinaryItem");
             List<OrdinaryItem> ordinaryItemList = query.getResultList();
@@ -52,13 +53,10 @@ public class OrdinaryITemDao {
                 em.flush();
             }
             et.commit();
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e) {
             e.printStackTrace();
         }
-        finally
-        {
+        finally {
             if (et.isActive()) et.rollback();
             em.close();
         }
@@ -73,8 +71,23 @@ public class OrdinaryITemDao {
              ) {
             em.persist(item);
         }
-
         transaction.commit();
         System.out.printf("added new item");
+    }
+
+    public void delete(OrdinaryItem item){
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            item = em.find(item.getClass(), item.getId());
+            em.remove(item);
+            em.flush();
+            trans.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            if(trans.isActive()) trans.rollback();
+        }
     }
 }

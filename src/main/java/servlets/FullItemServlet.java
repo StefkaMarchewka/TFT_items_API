@@ -15,7 +15,6 @@ import java.io.IOException;
 @WebServlet(name = "FullItemServlet", urlPatterns = {"/collection/fullItem/*"}, loadOnStartup = 1)
 public class FullItemServlet extends HttpServlet {
 
-   // OrdinaryITemDao oID = new OrdinaryITemDao();
     FullItemDAO fullItemDAO = new FullItemDAO();
     FullItemCreator itemCreator = new FullItemCreator();
 
@@ -35,10 +34,10 @@ public class FullItemServlet extends HttpServlet {
 
 
     private int getIndexFromUri(HttpServletRequest req) {
-        String uri = req.getRequestURI();
         String[] uriParts = req.getRequestURI().split("/");
-        String nameToParse = uriParts[2];
-        int index = Integer.valueOf(nameToParse);
+        int lastElemFromUri = uriParts.length-1;
+        String nameToParse = uriParts[lastElemFromUri];
+        int index = Integer.parseInt(nameToParse);
         return index;
     }
 

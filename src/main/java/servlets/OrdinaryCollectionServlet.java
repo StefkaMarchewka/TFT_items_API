@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.OrdinaryITemDao;
+import dao.OrdinaryItemDao;
 import jdk.nashorn.api.scripting.JSObject;
 import model.OrdinaryItem;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @WebServlet(name = "OrdinaryItemCollectionServlet", urlPatterns = {"collection/ordinaryItem"}, loadOnStartup = 1)
 public class OrdinaryCollectionServlet extends HttpServlet {
 
-    OrdinaryITemDao oID = new OrdinaryITemDao();
+    OrdinaryItemDao oID = new OrdinaryItemDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

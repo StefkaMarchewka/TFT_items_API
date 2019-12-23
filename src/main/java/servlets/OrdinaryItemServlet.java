@@ -1,6 +1,7 @@
 package servlets;
 
-import dao.OrdinaryITemDao;
+import dao.OrdinaryItemDao;
+import model.OrdinaryItem;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import java.io.IOException;
     @WebServlet(name = "OrdinaryItemServlet", urlPatterns = { "collection/ordinaryItem/*"}, loadOnStartup = 1)
     public class OrdinaryItemServlet extends HttpServlet {
 
-        OrdinaryITemDao oID = new OrdinaryITemDao();
+        OrdinaryItemDao oID = new OrdinaryItemDao();
 
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,5 +28,10 @@ import java.io.IOException;
 
         @Override
         protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            String[] uriParts = req.getRequestURI().split("/");
+            int id = Integer.parseInt(uriParts[3]);
+
+            OrdinaryItem itemToDel = oID.getOrdinaryItem(id);
+            oID.delete(itemToDel);
         }
     }

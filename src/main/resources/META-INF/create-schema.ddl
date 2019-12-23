@@ -1798,3 +1798,6 @@
        add constraint FKfm7afr92tc4mlq9942dwiwf9g 
        foreign key (FullItem_id) 
        references FullItem
+
+    alter table public.ordinaryitem 
+       add column amount varchar(255)
