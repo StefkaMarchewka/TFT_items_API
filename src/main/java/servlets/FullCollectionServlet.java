@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-@WebServlet(name = "collectionServlet", urlPatterns = {"/collection"}, loadOnStartup = 1)
-public class CollectionServlet extends HttpServlet {
+@WebServlet(name = "FullItemCollectionServlet", urlPatterns = {"/collection/fullItem"}, loadOnStartup = 1)
+public class FullCollectionServlet extends HttpServlet {
     FullItemDAO dao = new FullItemDAO();
 
     @Override
